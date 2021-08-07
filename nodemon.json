@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "src",
+    "tsconfig.json",
+    ".env.development"
+  ],
+  "ext": "ts,js",
+  "ignore": [
+    "src/**/*.spect.ts",
+    "src/**/*.test.ts"
+  ],
+  "exec": "ts-node src/index.ts"
+}
