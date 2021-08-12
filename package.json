@@ -8,7 +8,8 @@
     "dev": "nodemon | pino-pretty --colorize",
     "test": "jest",
     "lint": "eslint 'src/**/*.{js,ts}'",
-    "lint:fix": "eslint 'src/**/*.{js,ts}' --fix"
+    "lint:fix": "eslint 'src/**/*.{js,ts}' --fix",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,ts}": "npm run lint:fix"
