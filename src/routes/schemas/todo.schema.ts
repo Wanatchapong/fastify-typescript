@@ -4,12 +4,13 @@ export const CreateTodoSchema = {
   summary: 'Create new todo with given values',
   body: {
     type: 'object',
+    required: ['title', 'status'],
     properties: {
       title: { type: 'string' },
-      description: { type: 'string' },
+      description: { type: 'string', nullable: true },
       status: {
         type: 'string',
-        enum: ['in_progress', 'done'],
+        enum: ['TODO', 'IN_PROGRESS', 'DONE'],
       },
     },
   },
@@ -39,12 +40,13 @@ export const UpdateTodoSchema = {
   },
   body: {
     type: 'object',
+    required: ['title', 'status'],
     properties: {
       title: { type: 'string' },
-      description: { type: 'string' },
+      description: { type: 'string', nullable: true },
       status: {
         type: 'string',
-        enum: ['in_progress', 'done'],
+        enum: ['TODO', 'IN_PROGRESS', 'DONE'],
       },
     },
   },

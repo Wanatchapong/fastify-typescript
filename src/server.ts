@@ -2,7 +2,8 @@ import fastify from 'fastify'
 import swagger from 'fastify-swagger'
 import swaggerOptions from './config/swagger'
 import config from './config'
-import todoRoutes from './routes/todo'
+import allRoutes from './routes'
+import { errorHandler, notFoundHandler } from './errors/handler'
 
 const createServer = async () => {
   const server = fastify({
@@ -26,8 +27,12 @@ const createServer = async () => {
   })
   server.register(swagger, swaggerOptions)
 
-  // custom middleware, routes, hooks
-  server.register(todoRoutes, { prefix: '/todo' })
+  // custom middleware, hooks
+
+  // api routes
+  allRoutes.forEach(({ prefix, routes }) => {
+    server.register(routes, { prefix })
+  })
 
   // default route
   server.get('/', async (request, reply) => {
@@ -36,12 +41,10 @@ const createServer = async () => {
       version: config.app.version,
     })
   })
-  // global error handler
-  server.setErrorHandler((error, request, reply) => {
-    request.log.error(error.toString())
 
-    reply.send({ error })
-  })
+  // global error handler
+  server.setNotFoundHandler(notFoundHandler)
+  server.setErrorHandler(errorHandler)
 
   await server.ready()
 

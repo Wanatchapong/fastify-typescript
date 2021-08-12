@@ -1,15 +1,15 @@
-import { FastifyRequest, RequestGenericInterface } from 'fastify'
+import { FastifyRequest } from 'fastify'
 
 // Using generics properties for dynamic properties located on the route-level "request" object
 
-interface TodoParams {
+export interface TodoParams {
   id?: number
 }
 
-interface TodoBody {
-  title?: string
+export interface TodoBody {
+  title: string
   description?: string
-  status?: 'in_progress' | 'done'
+  status: 'TODO' | 'IN_PROGRESS' | 'DONE'
 }
 
 export type TodoRequest = FastifyRequest<{
