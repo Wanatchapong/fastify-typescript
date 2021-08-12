@@ -2,9 +2,9 @@ import { FastifyReply } from 'fastify'
 
 interface ApiResponse {
   message: string
-  data?: any
+  data?: unknown
 }
 
 export interface IReply extends FastifyReply {
-  send: (payload?: ApiResponse) => any
+  send(payload?: ApiResponse): FastifyReply
 }

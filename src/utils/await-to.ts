@@ -6,7 +6,7 @@
  */
 export function to<T, U = Error>(
   promise: Promise<T>,
-  errorExt?: object,
+  errorExt?: Record<string, unknown>,
 ): Promise<[U, undefined] | [null, T]> {
   return promise
     .then<[null, T]>((data: T) => [null, data])

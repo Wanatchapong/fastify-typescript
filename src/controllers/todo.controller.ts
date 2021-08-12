@@ -5,7 +5,7 @@ import * as todoService from '../services/todo.service'
 export const getAllTodos = async (
   request: TodoRequest,
   reply: FastifyReply,
-) => {
+): Promise<void> => {
   const todos = await todoService.getTodos()
 
   reply.send({
@@ -17,7 +17,7 @@ export const getAllTodos = async (
 export const getTodoById = async (
   request: TodoRequest,
   reply: FastifyReply,
-) => {
+): Promise<void> => {
   const { id } = request.params
 
   const todo = await todoService.getTodoById(Number(id))
@@ -28,7 +28,10 @@ export const getTodoById = async (
   })
 }
 
-export const createTodo = async (request: TodoRequest, reply: FastifyReply) => {
+export const createTodo = async (
+  request: TodoRequest,
+  reply: FastifyReply,
+): Promise<void> => {
   const data: TodoBody = request.body
 
   await todoService.createTodo(data)
@@ -38,7 +41,10 @@ export const createTodo = async (request: TodoRequest, reply: FastifyReply) => {
   })
 }
 
-export const updateTodo = async (request: TodoRequest, reply: FastifyReply) => {
+export const updateTodo = async (
+  request: TodoRequest,
+  reply: FastifyReply,
+): Promise<void> => {
   const id = request.params.id
   const data: TodoBody = request.body
 
@@ -49,7 +55,10 @@ export const updateTodo = async (request: TodoRequest, reply: FastifyReply) => {
   })
 }
 
-export const deleteTodo = async (request: TodoRequest, reply: FastifyReply) => {
+export const deleteTodo = async (
+  request: TodoRequest,
+  reply: FastifyReply,
+): Promise<void> => {
   const id = request.params.id
 
   await todoService.deleteById(Number(id))

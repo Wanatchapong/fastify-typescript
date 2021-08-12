@@ -1,11 +1,13 @@
-import fastify from 'fastify'
+import fastify, { FastifyInstance } from 'fastify'
+import fastifyCors from 'fastify-cors'
+import fastifyHelmet from 'fastify-helmet'
 import swagger from 'fastify-swagger'
 import swaggerOptions from './config/swagger'
 import config from './config'
 import allRoutes from './routes'
 import { errorHandler, notFoundHandler } from './errors/handler'
 
-const createServer = async () => {
+const createServer = async (): Promise<FastifyInstance> => {
   const server = fastify({
     // logger: {
     //   level: config.logger.level,
@@ -14,8 +16,8 @@ const createServer = async () => {
   })
 
   // third party
-  server.register(require('fastify-cors'))
-  server.register(require('fastify-helmet'), {
+  server.register(fastifyCors)
+  server.register(fastifyHelmet, {
     contentSecurityPolicy: {
       directives: {
         defaultSrc: [`'self'`],
@@ -41,7 +43,6 @@ const createServer = async () => {
       version: config.app.version,
     })
   })
-
   // global error handler
   server.setNotFoundHandler(notFoundHandler)
   server.setErrorHandler(errorHandler)

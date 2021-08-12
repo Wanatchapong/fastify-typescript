@@ -4,7 +4,7 @@ import { ApiError } from './api-error'
 export const notFoundHandler = (
   request: FastifyRequest,
   reply: FastifyReply,
-) => {
+): void => {
   reply.code(404).send({
     error: {
       code: 'not_found',
@@ -17,15 +17,16 @@ export const errorHandler = (
   error: Error,
   request: FastifyRequest,
   reply: FastifyReply,
-) => {
+): void => {
   if (error instanceof ApiError) {
     const { code, message } = error as ApiError
-    return reply.code(400).send({
+    reply.code(400).send({
       error: {
         code,
         message,
       },
     })
+    return
   }
 
   const { statusCode, code, message } = error as FastifyError
