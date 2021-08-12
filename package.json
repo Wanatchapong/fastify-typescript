@@ -13,12 +13,6 @@
   "lint-staged": {
     "*.{js,ts}": "npm run lint:fix"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "npx --no-install commitlint --edit \"$1\"",
-      "pre-commit": "lint-staged"
-    }
-  },
   "dependencies": {
     "dotenv": "^10.0.0",
     "fastify": "^3.18.0",
