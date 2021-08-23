@@ -1,5 +1,3 @@
-import pkgInfo from '../package.json'
-
 export default {
   env: process.env.NODE_ENV || 'development',
   server: {
@@ -7,8 +5,8 @@ export default {
     port: Number(process.env.PORT) || 3000,
   },
   app: {
-    name: 'Sample API',
-    version: pkgInfo.version,
+    name: process.env.npm_package_name,
+    version: process.env.npm_package_version,
   },
   logger: {
     level: process.env.LOG_LEVEL || 'debug',

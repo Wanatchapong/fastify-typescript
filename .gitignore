@@ -55,3 +55,6 @@ Thumbs.db
 build
 dist
 out
+
+# Jest-html-reporters
+test-report.html

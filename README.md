@@ -1,6 +1,20 @@
 # Fastify TypeScript
 
-Development Tools:
+## 🎉 Quick Start
+
+1. Create .env file at root directory of project
+2. Copy all environments variables from .env.example into .env
+3. Install dependencies run: `npm install`
+4. Run development: `npm run dev`
+
+## 🐳 Run on Docker
+
+1. After created .env and installed dependencies same above
+2. Compile sources run: `npm build`
+3. Build docker image run: `docker build --tag image-name .`
+4. Run docker container in detached mode run: `docker run -d -p 8000:8000 image-name`
+
+## 📌 Dependencies
 
 - [Fastify](https://www.fastify.io): Fast and low overhead web framework, for Node.js
 - [TypeScript](https://www.typescriptlang.org): Static type definitions for JavaScript

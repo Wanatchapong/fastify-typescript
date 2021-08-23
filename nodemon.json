@@ -2,12 +2,16 @@
   "watch": [
     "src",
     "tsconfig.json",
-    ".env.development"
+    ".env"
   ],
   "ext": "ts,js",
   "ignore": [
     "src/**/*.spect.ts",
     "src/**/*.test.ts"
   ],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": "8000"
+  },
   "exec": "ts-node src/index.ts"
 }
