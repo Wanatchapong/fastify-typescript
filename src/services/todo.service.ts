@@ -1,4 +1,4 @@
-import { Todo } from '../models/Todo'
+import { Todo } from '../models/todo.model'
 import { TodoBody } from '../interfaces/todo.interface'
 import { ApiError } from '../errors/api-error'
 

@@ -14,6 +14,7 @@ const startServer = async () => {
     console.log(`Server listening on ${address}`)
 
     server.swagger()
+    server.blipp()
   } catch (error) {
     console.error(error)
     process.exit(1)

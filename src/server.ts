@@ -1,10 +1,11 @@
 import fastify, { FastifyInstance } from 'fastify'
 import fastifyCors from 'fastify-cors'
 import fastifyHelmet from 'fastify-helmet'
-import swagger from 'fastify-swagger'
+import fastifyBlipp from 'fastify-blipp'
+import fastifySwagger from 'fastify-swagger'
 import swaggerOptions from './config/swagger'
 import config from './config'
-import allRoutes from './routes'
+import routes from './routes'
 import { errorHandler, notFoundHandler } from './errors/handler'
 
 const createServer = async (): Promise<FastifyInstance> => {
@@ -27,12 +28,13 @@ const createServer = async (): Promise<FastifyInstance> => {
       },
     },
   })
-  server.register(swagger, swaggerOptions)
+  server.register(fastifySwagger, swaggerOptions)
+  server.register(fastifyBlipp)
 
   // custom middleware, hooks
 
   // api routes
-  allRoutes.forEach(({ prefix, routes }) => {
+  routes.forEach(({ prefix, routes }) => {
     server.register(routes, { prefix })
   })
 
