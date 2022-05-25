@@ -11,8 +11,8 @@ export default {
   logger: {
     level: process.env.LOG_LEVEL || 'debug',
   },
-  postgres: {
-    url: process.env.POSTGRES_URL,
+  mariadb: {
+    url: process.env.MARIADB_URL,
   },
   mongo: {
     uri: process.env.MONGODB_URI,
