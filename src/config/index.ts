@@ -12,11 +12,7 @@ export default {
     level: process.env.LOG_LEVEL || 'debug',
   },
   postgres: {
-    host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_PORT,
-    user: process.env.POSTGRES_USER,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DATABASE,
+    url: process.env.POSTGRES_URL,
   },
   mongo: {
     uri: process.env.MONGODB_URI,

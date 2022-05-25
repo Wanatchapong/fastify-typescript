@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import path from 'path'
 import dotenv from 'dotenv'
 // Need create a .env file in the root directory before start app
@@ -5,9 +6,11 @@ dotenv.config({ path: path.resolve(process.cwd(), '.env') })
 
 import createServer from './server'
 import config from './config'
+import { sequelize } from './db'
 
 const startServer = async () => {
   try {
+    await sequelize.authenticate()
     const server = await createServer()
     const address = await server.listen(config.server.port, config.server.host)
     console.log(`Environment: ${process.env.NODE_ENV}`)
