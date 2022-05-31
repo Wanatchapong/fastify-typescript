@@ -4,7 +4,7 @@ import config from './config'
 import Category from './models/category.model'
 import Product from './models/product.model'
 
-export const sequelize = new Sequelize(config.mariadb.url || '', {
+export const sequelize = new Sequelize(config.db.url || '', {
   // models: [__dirname + '/models'],
   models: [Category, Product],
 })
